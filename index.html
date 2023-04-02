@@ -60,3 +60,21 @@
 	</form>
 </body>
 </html>
+<script>
+  function validatePassword() {
+    var password = document.getElementById("password").value;
+    var upperCaseLetters = /[A-Z]/g;
+    var lowerCaseLetters = /[a-z]/g;
+    var numbers = /[0-9]/g;
+    if (password.length < 10 || !password.match(upperCaseLetters) || !password.match(lowerCaseLetters) || !password.match(numbers)) {
+      alert("密码必须包含大写字母、小写字母和数字，且不少于10位");
+      return false;
+    }
+    return true;
+  }
+  document.querySelector("form").addEventListener("submit", function(event) {
+    if (!validatePassword()) {
+      event.preventDefault();
+    }
+  });
+</script>
